@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page import="javamysql.ConnectDB" %>
+<%@ page import="javamysql.ConnectDB"%>
 
 
 <html>
 <head></head>
 <body>
-<% // 자바파일이 필요하므로 위 코드처럼 임포트합니다. %>
-<%
+	<%
 request.setCharacterEncoding("UTF-8");
 String id = request.getParameter("id");
 String pwd = request.getParameter("pwd");
@@ -21,15 +20,19 @@ try{
 	out.println("id = " + id);
 	out.println("pwd = " + pwd);
 	out.println("type = " + type);
+
 	if(type.equals("login")) {
 		String returns = connectDB.logindb(id, pwd);
 		out.print(returns);
-		} 
+		}
+
 	else if(type.equals("join")) {
 		String returns = connectDB.joindb(id, pwd);
 		out.print(returns);
 	}
-}catch(NullPointerException e){
+
+}
+catch(NullPointerException e){
 	
 }
 
